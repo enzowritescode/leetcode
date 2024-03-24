@@ -3,20 +3,17 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-    if (nums.length <= 1) {
-        return;
-    }
+    let l = 0;
 
-    for (let i = 0; i < nums.length; i++) {
-        if (nums[i] == 0) {
+    for (let r = 0; r < nums.length; r++) {
+        if (nums[r]) {
+            // [nums[l], nums[r]] = [nums[r], nums[l]];
+            // l++;
 
-            for (let j = i; j < nums.length; j++) {
-                if (nums[j] != 0) {
-                    nums[i] = nums[j];
-                    nums[j] = 0;
-                    break;
-                }
-            }
+            let tmp = nums[r];
+            nums[r] = nums[l];
+            nums[l] = tmp;
+            l++;
         }
     }
 };
@@ -41,9 +38,6 @@ function test() {
     console.log(nums);
 
     nums = [4,2,4,0,0,3,0,5,1,0];
-
-    [4,2,4,0,0,3,0,5,1,0]
-    [4,2,4,3,0,0,0,5,1,0]
     moveZeroes(nums);
     console.log(nums);
 }
