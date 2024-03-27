@@ -18,18 +18,14 @@ var reverseList = function(head) {
 	}
 
 	let reversed = null;
-	let cur;
+	let cur = null;
 	while (queue.length > 0) {
 		let tmp = queue.pop();
 
-		if (reversed == null) {
-			reversed = tmp;
+		if (reversed) {
+			cur.next = tmp;
 		} else {
-			if (tmp) {
-				cur.next = tmp;
-			} else {
-				cur.next = null;
-			}
+			reversed = tmp;
 		}
 
 		cur = tmp;
